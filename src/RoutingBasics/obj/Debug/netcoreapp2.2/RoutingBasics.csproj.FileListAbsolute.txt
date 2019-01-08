@@ -1,0 +1,14 @@
+C:\src\RoutingAndCarterDemo\src\RoutingBasics\bin\Debug\netcoreapp2.2\RoutingBasics.deps.json
+C:\src\RoutingAndCarterDemo\src\RoutingBasics\bin\Debug\netcoreapp2.2\RoutingBasics.runtimeconfig.json
+C:\src\RoutingAndCarterDemo\src\RoutingBasics\bin\Debug\netcoreapp2.2\RoutingBasics.runtimeconfig.dev.json
+C:\src\RoutingAndCarterDemo\src\RoutingBasics\bin\Debug\netcoreapp2.2\RoutingBasics.dll
+C:\src\RoutingAndCarterDemo\src\RoutingBasics\bin\Debug\netcoreapp2.2\RoutingBasics.pdb
+C:\src\RoutingAndCarterDemo\src\RoutingBasics\obj\Debug\netcoreapp2.2\RoutingBasics.csprojAssemblyReference.cache
+C:\src\RoutingAndCarterDemo\src\RoutingBasics\obj\Debug\netcoreapp2.2\RoutingBasics.csproj.CoreCompileInputs.cache
+C:\src\RoutingAndCarterDemo\src\RoutingBasics\obj\Debug\netcoreapp2.2\RoutingBasics.RazorAssemblyInfo.cache
+C:\src\RoutingAndCarterDemo\src\RoutingBasics\obj\Debug\netcoreapp2.2\RoutingBasics.RazorAssemblyInfo.cs
+C:\src\RoutingAndCarterDemo\src\RoutingBasics\obj\Debug\netcoreapp2.2\RoutingBasics.AssemblyInfoInputs.cache
+C:\src\RoutingAndCarterDemo\src\RoutingBasics\obj\Debug\netcoreapp2.2\RoutingBasics.AssemblyInfo.cs
+C:\src\RoutingAndCarterDemo\src\RoutingBasics\obj\Debug\netcoreapp2.2\RoutingBasics.RazorTargetAssemblyInfo.cache
+C:\src\RoutingAndCarterDemo\src\RoutingBasics\obj\Debug\netcoreapp2.2\RoutingBasics.dll
+C:\src\RoutingAndCarterDemo\src\RoutingBasics\obj\Debug\netcoreapp2.2\RoutingBasics.pdb
