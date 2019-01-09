@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 
@@ -15,7 +14,7 @@ namespace RoutingBasics
 {
     public class Startup
     {
-        private IList<Widget> _widgets;
+        private readonly IList<Widget> _widgets;
 
         public Startup()
         {
@@ -31,8 +30,6 @@ namespace RoutingBasics
         {
             var routeBuilder = new RouteBuilder(app);
 
-            routeBuilder.MapGet("/", context => context.Response.WriteAsync("Hi, from AspNet Core Routing!"));
-            
             routeBuilder.MapGet("/widgets", context => context.Response.WriteAsync(JsonConvert.SerializeObject(_widgets)));
             routeBuilder.MapGet("/widgets/{id:int}", context =>
             {
@@ -44,10 +41,10 @@ namespace RoutingBasics
                     var widget = _widgets.First(x => x.Id == id);
                     return context.Response.WriteAsync(JsonConvert.SerializeObject(widget));
                 }
-                catch (InvalidOperationException e)
+                catch (InvalidOperationException)
                 {
                     context.Response.StatusCode = 404;
-                    return context.Response.WriteAsync("Widget Not Found");
+                    return Task.CompletedTask;
                 }
             });
             
@@ -70,23 +67,30 @@ namespace RoutingBasics
                     
                     _widgets.Add(widget);
 
-                    context.Response.Headers.Add("Location", new Uri($"{context.Request.Scheme}://{context.Request.Host}/{context.Request.Path}/{widget.Id}").AbsoluteUri);
-                    context.Response.StatusCode = (int)HttpStatusCode.Created;
+                    context.Response.Headers.Add("Location", $"{context.Request.Scheme}://{context.Request.Host}/{context.Request.Path}/{widget.Id}");
+                    context.Response.StatusCode = 201;
                     return context.Response.WriteAsync(JsonConvert.SerializeObject(widget));
                 }
             });
             
-            
-            
+            routeBuilder.MapDelete("/widgets/{id:int}", context =>
+            {
+                var routeValue = context.GetRouteValue("id") as string;
+                var id = Int32.Parse(routeValue);
+
+                try
+                {
+                    var widget = _widgets.First(x => x.Id == id);
+                    _widgets.Remove(widget);
+                }
+                catch (InvalidOperationException){}
+                
+                context.Response.StatusCode = 204;
+                return Task.CompletedTask;
+            });
             
             var routes = routeBuilder.Build();
             app.UseRouter(routes);
         }
-    }
-
-    public class Widget
-    {
-        public int Id { get; set; }
-        public string Description { get; set; }
     }
 }
