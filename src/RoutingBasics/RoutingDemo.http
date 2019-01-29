@@ -1,0 +1,18 @@
+
+
+
+### GET /widgets
+GET http://localhost:5000/widgets
+
+### GET /widgets/{id:int}
+GET http://localhost:5000/widgets/1
+
+### POST /widgets
+POST http://localhost:5000/widgets
+Content-Type: application/json
+
+{
+  "description": "Hello Leeds #ers"
+}
+
+###
